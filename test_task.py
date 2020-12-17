@@ -1,10 +1,9 @@
-from pages.test_task_page import TaskPage
-
-
-link = 'https://yandex.ru/'
+from pages.yandex_pages import TaskPage
 
 
 def test_search_in_yandex(browser):
-    search = TaskPage(browser, link)
-    search.open()
-    search.search_in_yandex()
+    yandex_main_page = TaskPage(browser)
+    yandex_main_page.go_to_site()
+    yandex_main_page.search_in_yandex('Тензор')
+
+

@@ -5,13 +5,17 @@ from selenium.webdriver.support import expected_conditions as EC
 
 
 class BasePage():
-    def __init__(self, browser, url, timeout=10):
+    def __init__(self, browser, timeout=10):
         self.browser = browser
-        self.url = url
         self.browser.implicitly_wait(timeout)
+        self.base_url = "https://yandex.ru/"
 
-    def open(self):
-        self.browser.get(self.url)
+    def go_to_site(self):
+        return self.browser.get(self.base_url)
+
+    def find_element(self, locator, time=10):
+        return WebDriverWait(self.browser, time).until(EC.presence_of_element_located(locator),
+                                                       message=f"Can't find element by locator {locator}")
 
     def is_element_present(self, how, what):
         try:
