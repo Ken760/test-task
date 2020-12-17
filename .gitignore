@@ -7,7 +7,7 @@ __pycache__/
 *.so
 .gitignore
 .gitattributes
-
+.pytest_cache
 # Distribution / packaging
 .Python
 build/
