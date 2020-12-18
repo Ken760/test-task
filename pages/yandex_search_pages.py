@@ -7,7 +7,6 @@ import time
 class YandexSearchLocators:
     YANDEX_SEARCH_FIELD = (By.ID, "text")
     SUGGEST = (By.CLASS_NAME, "mini-suggest__popup_visible")
-    YANDEX_SEARCH_BUTTON = (By.CLASS_NAME, "search2__button")
     SEARCH_RESULTS = (By.CLASS_NAME, "path.organic__path")
 
 
@@ -23,14 +22,15 @@ class SearchPage(BasePage):
         """Проверка таблицы с подсказками"""
         assert self.is_element_present(*YandexSearchLocators.SUGGEST), 'Таблица с подсказками отсутствует'
 
-    def click_on_the_search_button(self):
+    def click_on_the_search(self):
         """Нажатие кнопки enter"""
         pressing_enter = self.browser.find_element(*YandexSearchLocators.YANDEX_SEARCH_FIELD)
         pressing_enter.send_keys(Keys.ENTER)
 
     def checking_table_results(self):
         """Проверка таблицы результата поиска"""
-        assert "No results found" not in self.browser.page_source
+        assert "По вашему запросу ничего не нашлось" not in self.browser.page_source, \
+            "По вашему запросу ничего не нашлось"
 
     def checking_search_results(self):
         """Проверка результатов поиска"""
