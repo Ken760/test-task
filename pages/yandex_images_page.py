@@ -18,6 +18,10 @@ class ImagesPage(BasePage):
         images_link = self.browser.find_element(*YandexPictureLocators.YANDEX_IMAGE_LINK)
         images_link.click()
 
+    def checking_current_url(self):
+        """Проверка перехода на url"""
+        assert "https://yandex.ru/images/" in self.browser.current_url
+
     def switch_to_page(self):
         """Переключение на другое окно браузера"""
         tabs = self.browser.window_handles  # список отрывшихся вкладок

@@ -28,7 +28,11 @@ class SearchPage(BasePage):
         pressing_enter = self.browser.find_element(*YandexSearchLocators.YANDEX_SEARCH_FIELD)
         pressing_enter.send_keys(Keys.ENTER)
 
-    def checking_the_results(self):
+    def checking_table_results(self):
+        """Проверка таблицы результата поиска"""
+        assert "No results found" not in self.browser.page_source
+
+    def checking_search_results(self):
         """Проверка результатов поиска"""
         first_five = self.browser.find_elements(*YandexSearchLocators.SEARCH_RESULTS)[:5]
         for result in first_five:
