@@ -7,7 +7,7 @@ from time import sleep
 class YandexSearchLocators:
     YANDEX_SEARCH_FIELD = (By.ID, "text")
     SUGGEST = (By.CLASS_NAME, "mini-suggest__popup_visible")
-    RESULTS_TABLE = (By.CLASS_NAME, "serp-item")
+    RESULTS_TABLE = (By.CSS_SELECTOR, '[class="organic__title-wrapper typo typo_text_l typo_line_m"]')
     SEARCH_RESULTS = (By.CLASS_NAME, "path.organic__path")
 
 
@@ -35,9 +35,6 @@ class SearchPage(BasePage):
     def checking_table_results(self):
         """Проверка таблицы результата поиска"""
         assert self.is_element_present(*YandexSearchLocators.RESULTS_TABLE), "Резултатов не найдено"
-        all_list = self.browser.find_elements(*YandexSearchLocators.RESULTS_TABLE)
-        nav_bar_menu = [x.text for x in all_list if len(x.text) > 0]
-        return nav_bar_menu
 
     def checking_search_results(self):
         """Проверка результатов поиска"""
