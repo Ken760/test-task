@@ -10,7 +10,7 @@
 Папка allure-2.7.0 для запуска тестов с отчетом
 
 Для создания allure отчётов использовать команду:
-pytest alluredir=allure_results(где =allures_results название папки для сохранения отчетов)
+pytest Tests.py --alluredir=allure_results(где =allures_results название папки для сохранения отчетов)
 Для просмотра отчетов использовать команду:
 allure serve allure_results
 
