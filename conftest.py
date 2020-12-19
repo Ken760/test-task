@@ -14,10 +14,10 @@ def browser(request):
     browser = None
     if browser_name == "chrome":
         print("\nstart chrome browser for test..")
-        browser = webdriver.Chrome()
+        browser = webdriver.Chrome(executable_path="driver./chromedriver")
     elif browser_name == "firefox":
         print("\nstart firefox browser for test..")
-        browser = webdriver.Firefox()
+        browser = webdriver.Firefox(executable_path="driver./geckodriver")
     else:
         raise pytest.UsageError("--browser_name should be chrome or firefox")
     yield browser
