@@ -20,6 +20,7 @@ class ImagesPage(BasePage):
         assert self.is_element_present(*YandexPictureLocators.YANDEX_IMAGE_LINK), "Ссылка на картинки отсутствует"
         images_link = self.browser.find_element(*YandexPictureLocators.YANDEX_IMAGE_LINK)
         images_link.click()
+        sleep(1)
 
     def switch_to_page(self):
         """Переключение на другое окно браузера"""

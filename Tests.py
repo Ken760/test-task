@@ -1,6 +1,5 @@
 from pages.yandex_search_pages import SearchPage
 from pages.yandex_images_page import ImagesPage
-import time
 
 
 def test_search_in_yandex(browser):
@@ -22,6 +21,5 @@ def test_yandex_images(browser):
     yandex_page.click_theme_images()
     yandex_page.click_images()
     yandex_page.all_button()
-    time.sleep(5)
 
 
