@@ -37,8 +37,8 @@ class ImagesPage(BasePage):
         selecting_images_theme = images_theme[0] # Выбор темы изображения
         title_theme = self.browser.find_element(*YandexPictureLocators.TITLE_THEME).text
         selecting_images_theme.click()
-        text = self.browser.find_element(*YandexPictureLocators.TEXT_INPUT).get_attribute('value')
-        assert self.browser.current_url and title_theme in text, "Ссылка не открылась или нет текста в поиске"
+        input_text = self.browser.find_element(*YandexPictureLocators.TEXT_INPUT).get_attribute('value')
+        assert self.browser.current_url and title_theme in input_text, "Ссылка не открылась или нет текста в поиске"
 
     def click_images(self):
         """Выбор изображения из темы"""
