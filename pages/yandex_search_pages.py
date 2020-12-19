@@ -1,19 +1,23 @@
 from selenium.webdriver.common.keys import Keys
 from .base_page import BasePage
 from selenium.webdriver.common.by import By
-import time
+from time import sleep
 
 
 class YandexSearchLocators:
     YANDEX_SEARCH_FIELD = (By.ID, "text")
     SUGGEST = (By.CLASS_NAME, "mini-suggest__popup_visible")
+    RESULTS_TABLE = (By.CLASS_NAME, "serp-item")
     SEARCH_RESULTS = (By.CLASS_NAME, "path.organic__path")
 
 
 class SearchPage(BasePage):
 
     def search_in_yandex(self, word):
-        """Ввод в поле поиска текста запроса"""
+        """
+        Ввод в поле поиска текста запроса
+        :param word: текст запроса
+        """
         assert self.is_element_present(*YandexSearchLocators.YANDEX_SEARCH_FIELD), "Поле поиска отсутсвует"
         search_field = self.browser.find_element(*YandexSearchLocators.YANDEX_SEARCH_FIELD)
         search_field.send_keys(word)
@@ -24,13 +28,16 @@ class SearchPage(BasePage):
 
     def click_on_the_search(self):
         """Нажатие кнопки enter"""
+        sleep(1)
         pressing_enter = self.browser.find_element(*YandexSearchLocators.YANDEX_SEARCH_FIELD)
         pressing_enter.send_keys(Keys.ENTER)
 
     def checking_table_results(self):
         """Проверка таблицы результата поиска"""
-        assert "По вашему запросу ничего не нашлось" not in self.browser.page_source, \
-            "По вашему запросу ничего не нашлось"
+        assert self.is_element_present(*YandexSearchLocators.RESULTS_TABLE), "Резултатов не найдено"
+        all_list = self.browser.find_elements(*YandexSearchLocators.RESULTS_TABLE)
+        nav_bar_menu = [x.text for x in all_list if len(x.text) > 0]
+        return nav_bar_menu
 
     def checking_search_results(self):
         """Проверка результатов поиска"""

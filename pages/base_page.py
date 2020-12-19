@@ -4,7 +4,8 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 
-class BasePage():
+class BasePage:
+
     def __init__(self, browser, timeout=10):
         self.browser = browser
         self.browser.implicitly_wait(timeout)
@@ -12,10 +13,6 @@ class BasePage():
 
     def go_to_site(self):
         return self.browser.get(self.base_url)
-
-    def find_element(self, locator, time=10):
-        return WebDriverWait(self.browser, time).until(EC.presence_of_element_located(locator),
-                                                       message=f"Can't find element by locator {locator}")
 
     def is_element_present(self, how, what):
         try:
