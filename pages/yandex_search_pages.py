@@ -1,7 +1,6 @@
 from selenium.webdriver.common.keys import Keys
 from .base_page import BasePage
 from selenium.webdriver.common.by import By
-from time import sleep
 
 
 class YandexSearchLocators:
@@ -28,13 +27,12 @@ class SearchPage(BasePage):
 
     def click_on_the_search(self):
         """Нажатие кнопки enter"""
-        sleep(1)
         pressing_enter = self.browser.find_element(*YandexSearchLocators.YANDEX_SEARCH_FIELD)
         pressing_enter.send_keys(Keys.ENTER)
 
     def checking_table_results(self):
         """Проверка таблицы результата поиска"""
-        assert self.is_element_present(*YandexSearchLocators.RESULTS_TABLE), "Резултатов не найдено"
+        assert self.is_element_present(*YandexSearchLocators.RESULTS_TABLE), "Резултатов поиска не найдено"
 
     def checking_search_results(self):
         """Проверка результатов поиска"""
