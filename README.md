@@ -19,4 +19,7 @@ pytest Tests.py
 - pytest —browser_name=firefox Tests.py
 - pytest —browser_name=chrome Tests.py
 
+Для запуска по умолчанию:
+- pytest Tests.py
+
 Использованные библиотеки находятся в файле requirements.txt 
