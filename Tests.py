@@ -33,6 +33,6 @@ def test_yandex_images(browser):
         yandex_page.click_images()
     with allure.step("При нажатии кнопки вперед картинка изменяется,"
                      "При нажатии кнопки назад картинка изменяется на то же изображение"):
-        yandex_page.all_button()
+        yandex_page.check_images()
 
 

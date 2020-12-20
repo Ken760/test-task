@@ -49,7 +49,7 @@ class ImagesPage(BasePage):
         selecting_images.click()
         sleep(1)
 
-    def all_button(self):
+    def check_images(self):
         img_url = self.browser.current_url
         self.button_next_images()
         self.button_previous_images()
