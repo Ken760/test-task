@@ -38,7 +38,7 @@ class SearchPage(BasePage):
         """Проверка результатов поиска"""
         first_five = self.browser.find_elements(*YandexSearchLocators.SEARCH_RESULTS)[:5]
         for result in first_five:
-            assert 'tensor.ru' in result.text, "В первых пяти результатах нет ссылки"
+            assert 'tensor.ru' in result.text, "В первых пяти результатах ссылка есть"
 
 
 
