@@ -50,6 +50,7 @@ class ImagesPage(BasePage):
         sleep(1)
 
     def check_images(self):
+        """Проверка на совпадение изображений"""
         img_url = self.browser.current_url
         self.button_next_images()
         self.button_previous_images()
